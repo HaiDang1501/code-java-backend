@@ -269,7 +269,7 @@ public class AuthController {
 		}
 
 		try {
-			Claims claims = Jwts.parser().setSigningKey(emailConfirmSecret).parseClaimsJws(token).getBody();
+			Claims claims = Jwts.parser().setSigningKey(resetPasswordSecret).parseClaimsJws(token).getBody();
 			logger.info("claims:" , claims);
 			// Kiểm tra subject của token có phải là subject của reset-password
 			if (!claims.getSubject().equals(resetPasswordTokenSubject)) {
