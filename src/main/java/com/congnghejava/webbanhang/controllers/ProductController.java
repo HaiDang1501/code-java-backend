@@ -116,8 +116,15 @@ public class ProductController {
 		if (sortDirection.isPresent()) {
 			productPage.setSortDirection(sortDirection.get());
 		}
+		else {
+			productPage.setSortBy("createdDate");
+		}
+		
 		if (sortBy.isPresent()) {
 			productPage.setSortBy(sortBy.get());
+		}
+		else {
+			productPage.setSortDirection("asc");
 		}
 
 		if (name.isPresent()) {
