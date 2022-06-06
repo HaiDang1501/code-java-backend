@@ -52,12 +52,14 @@ public class UserController {
 	private RoleRepository roleRepository;
 
 	@GetMapping("/me")
-	@PreAuthorize("hasRole('ROLE_USER')")
+	
 	public ResponseEntity<?> getCurrentUser(@CurrentUser UserPrincipal userPrincipal) {
 		UserCredential userCredential = userCredentialRepository.findById(userPrincipal.getId())
 				.orElseThrow(() -> new ResourceNotFoundException("User", "id", userPrincipal.getId()));
 		return ResponseEntity.status(HttpStatus.OK).body(new UserInfoResponse(userCredential));
 	}
+	
+	
 
 	@PutMapping("/info")
 	@PreAuthorize("hasRole('ROLE_USER')")
